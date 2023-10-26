@@ -1,0 +1,4 @@
+App:
+  port: 5000
+database:
+  dsn: root:123456@tcp(127.0.0.1:3306)/plm
