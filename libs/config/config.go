@@ -6,7 +6,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-func GetDatabaseConfig() map[string]any {
+func InitViperConfig() {
 	viper.SetConfigFile("config.yaml")
 	viper.SetConfigType("yaml")
 	viper.AddConfigPath("./config/")
@@ -15,6 +15,12 @@ func GetDatabaseConfig() map[string]any {
 	if err != nil {
 		log.Fatal("Error reading config file, ", err)
 	}
+}
 
+func GetDatabaseConfig() map[string]any {
 	return viper.GetStringMap("database")
+}
+
+func GetServerConfig() map[string]any {
+	return viper.GetStringMap("App")
 }

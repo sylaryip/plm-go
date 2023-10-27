@@ -1,4 +1,7 @@
 App:
   port: 5000
+  read_timeout: 60
+  write_timeout: 60
+  mode: debug
 database:
   dsn: root:123456@tcp(127.0.0.1:3306)/plm

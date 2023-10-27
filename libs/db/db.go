@@ -3,8 +3,6 @@ package db
 import (
 	"fmt"
 	"go-plm/libs/config"
-	"go-plm/libs/dao"
-
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -23,8 +21,8 @@ func InitDB() {
 	}
 
 	DB.AutoMigrate(
-		&dao.MaterialData{},
-		&dao.MaterialCodeSequence{},
-		&dao.MaterialSyncLog{},
+		&MaterialData{},
+		&MaterialCodeSequence{},
+		&MaterialSyncLog{},
 	)
 }
