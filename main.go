@@ -2,16 +2,22 @@ package main
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"go-plm/libs/config"
 	"go-plm/libs/db"
 	"go-plm/libs/routers"
+	"os"
+
+	"github.com/gin-gonic/gin"
 )
 
 var router *gin.Engine
 
 func init() {
-	config.InitViperConfig()
+	configPath := "config.yaml"
+	if len(os.Args) > 1 {
+		configPath = os.Args[1]
+	}
+	config.InitViperConfig(configPath)
 	db.InitDB()
 	router = routers.InitRouter()
 }

@@ -3,7 +3,9 @@ package db
 import (
 	"fmt"
 	"go-plm/libs/config"
-	"gorm.io/driver/mysql"
+	"go-plm/libs/db/models"
+
+	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
@@ -14,15 +16,15 @@ func InitDB() {
 	dbConfig := config.GetDatabaseConfig()
 
 	dsn := fmt.Sprintf("%v", dbConfig["dsn"])
-	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
 	if err != nil {
 		panic(err)
 	}
 
 	DB.AutoMigrate(
-		&MaterialData{},
-		&MaterialCodeSequence{},
-		&MaterialSyncLog{},
+		&models.MaterialData{},
+		&models.MaterialCodeSequence{},
+		&models.MaterialSyncLog{},
 	)
 }

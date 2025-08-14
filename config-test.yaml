@@ -4,4 +4,4 @@ App:
   write_timeout: 60
   mode: debug
 database:
-  dsn: postgres://postgres:mypassword@127.0.0.1:5432/plm
+  dsn: root:coros2022@tcp(192.168.29.150:3306)/plm

@@ -2,16 +2,14 @@ package routers
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"go-plm/libs/config"
 	"go-plm/libs/routers/api"
+
+	"github.com/gin-gonic/gin"
 )
 
 func InitRouter() *gin.Engine {
-	r := gin.New()
-	r.Use(gin.Logger())
-
-	r.Use(gin.Recovery())
+	r := gin.Default()
 
 	gin.SetMode(fmt.Sprint(config.GetServerConfig()["mode"]))
 
